@@ -1,0 +1,3 @@
+python/ some old python code for processing .srt files, for reference (we're doing this in ruby)
+ruby/
+- .srt parser http://snipplr.com/view/4411/resync-srt-subtitles/ BSD license
