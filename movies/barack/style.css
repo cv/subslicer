@@ -1,0 +1,7 @@
+#movie { font-family: serif; width: 800px; margin: 0 auto; } 
+.line { overflow:auto; width: 100%;  }
+.source a, .target a{ text-decoration: none; color: black; }
+.source a:hover, .target a:hover { cursor: pointer; }
+.source, .target { width: 45%; padding: 4px; }
+.source { float: left;  text-align: right; border-right: 1px dotted #ddd; }
+.target { float: right; }
