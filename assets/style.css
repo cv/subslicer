@@ -1,0 +1,88 @@
+body {
+  background: white;
+  margin: 0;
+  padding: 0 0 0 100px;
+  font-size: large;
+  background-color: #fff;
+  font-family: "Lucida Grande","bitstream vera sans","trebuchet ms",verdana,arial;
+  text-align: center; }
+
+h1 {
+  font-family: sans-serif;
+  letter-spacing: -1px;
+  color: #2D5AC3;
+  font-weight: normal;
+  margin-bottom: -10px;
+  font-size: 22px; }
+
+h2 {
+  font-family: sans-serif;
+  letter-spacing: -1px;
+  color: #2D5AC3;
+  font-weight: normal;
+  margin-bottom: -10px;
+  font-size: 18px; }
+
+h3, h4, h5 {
+  font-family: sans-serif; }
+
+h6 {
+  font-family: sans-serif;
+  float: right;
+  font-family: sans-serif; }
+
+#movie {
+  font-family: serif;
+  width: 900px;
+  margin: 1em auto;
+  border: 2px solid #ccc;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  overflow: auto; }
+
+.line {
+  overflow: auto; }
+
+.source {
+  width: 45%;
+  padding: 4px;
+  float: left;
+  text-align: right;
+  border-right: 1px solid #666; }
+  .source a {
+    text-decoration: none;
+    color: black; }
+    .source a:hover {
+      cursor: pointer; }
+
+.target {
+  width: 45%;
+  padding: 4px;
+  float: right;
+  display: none; }
+  .target a {
+    text-decoration: none;
+    color: black; }
+    .target a:hover {
+      cursor: pointer; }
+
+#player {
+  width: 475px;
+  float: right; }
+
+#page {
+  background-color: #efefef;
+  width: 600px;
+  margin: 50px auto;
+  padding: 20px 150px 20px 50px;
+  min-height: 600px;
+  border: 2px solid #fff;
+  outline: 1px solid #ccc;
+  text-align: left; }
+
+.less {
+  color: #999;
+  font-size: 12px; }
+
+a {
+  color: #295c72; }
