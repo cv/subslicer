@@ -1,0 +1,24 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
+    %title
+    %link{ :href => "style.css", :title => "stylesheet", :rel => "stylesheet", :type => "text/css" }
+    %script{ :src => "jquery.js", :type => "text/javascript" }
+  %body
+    %h1
+      Barack Obama - The American Dream
+    #movie
+      #player
+        %img{ :src => "player.png" }
+      /
+        \#player
+      .line
+        %p#clip00-00-02_000.source
+          %a{ :href => "clips/clip00-00-02_000" }
+            We share a dream
+        %p#clip00-00-02_000.target
+          %a{ :href => "clips/clip00-00-02_000" }
+            Compartilhamos um sonho...
+    /
+      \#movie
