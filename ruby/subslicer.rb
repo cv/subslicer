@@ -105,8 +105,8 @@ module SubSlicer
     
     def ffmpeg
       subs.map do |sub|
-        movie_url = "#{@output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
-        `ffmpeg -i #{@movie} -ss #{sub.from} -t #{sub.to - sub.from} #{movie_url}.flv`
+        movie_url = "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
+        `ffmpeg -i '#{movie}' -ss '#{sub.from}' -t '#{sub.to - sub.from}' '#{movie_url}.flv'`
       end
     end
 
