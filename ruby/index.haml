@@ -1,3 +1,4 @@
+!!!
 %html
   %head
     %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "content-type" }
@@ -12,7 +13,7 @@
 
       %a#player{ :href => '', :style => "display:block;width:400px;height:300px" }
       
-      %script
+      %script{:type => 'text/javascript'}
         flowplayer('player', 'flowplayer-3.1.0.swf');
 
       .line
@@ -26,7 +27,7 @@
             Compartilhamos um sonho...
 
       %ul#subs
-        - for sub in subs
+        - subs.each do |sub|
           %li
             %span.from= sub.from
             %span.to= sub.to
