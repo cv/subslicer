@@ -35,9 +35,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-1367.4566"
-     inkscape:cy="874.34394"
+     inkscape:zoom="0.085165546"
+     inkscape:cx="-411.14007"
+     inkscape:cy="729.07491"
      inkscape:document-units="px"
      inkscape:current-layer="g28"
      showgrid="false"
@@ -78,7 +78,7 @@
      id="g28">
     <g
        id="g2501"
-       transform="translate(39.999996,-464.28571)">
+       transform="matrix(0.7602818,0,0,0.7602818,1492.8466,-65.436737)">
       <text
          transform="scale(0.9447732,1.0584551)"
          id="text2461"
@@ -126,7 +126,7 @@
      id="g46">
     <g
        id="g2625"
-       transform="translate(-530,-108.57143)">
+       transform="matrix(0.7602818,0,0,0.7602818,1059.486,205.00634)">
       <text
          xml:space="preserve"
          style="font-size:117.61318207px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial;-inkscape-font-specification:Arial"
@@ -198,7 +198,7 @@
      id="g70">
     <g
        id="g2529"
-       transform="translate(-592.85714,-130)">
+       transform="matrix(0.7602818,0,0,0.7602818,1011.6969,188.71459)">
       <text
          id="text18"
          y="501.33606"
@@ -248,7 +248,7 @@
      id="g76">
     <g
        id="g2487"
-       transform="translate(-220,-95.714282)">
+       transform="matrix(0.7602818,0,0,0.7602818,1295.1734,214.78139)">
       <text
          id="text3599"
          y="165.92505"
@@ -293,7 +293,7 @@
     </g>
     <g
        id="g2597"
-       transform="translate(-301.42857,-39.999998)">
+       transform="matrix(0.7602818,0,0,0.7602818,1233.2648,257.13995)">
       <text
          xml:space="preserve"
          style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial;-inkscape-font-specification:Arial"
