@@ -105,6 +105,22 @@ module SubSlicer
   end
 end
 
+def usage
+  puts "Usage: #{$0} <movie file> <srt file> <output dir>
+  
+  movie file:    any movie file ffmpeg understands
+  srt file:      a subtitle for the movie file in the srt format
+  output dir:    dir where the output will be generated
+
+"
+  exit
+end
+
 if __FILE__ == $0
-  puts 'Hello, world!'
+  usage if ARGV.size != 3
+  
+  movie, srt, output_dir = *ARGV
+  list = SubSlicer::SubList.load(srt)
+  
+  puts list
 end
