@@ -93,9 +93,11 @@ module SubSlicer
       self.subs = SubSlicer::SubList.load(srt).subs
     end
     
-    def process
+    def process!
       clobber_output
       ffmpeg
+      generate_index
+      copy_assets
     end
     
     def clobber_output
@@ -108,6 +110,19 @@ module SubSlicer
         movie_url = "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
         `ffmpeg -i '#{movie}' -ss '#{sub.from}' -t '#{sub.to - sub.from}' '#{movie_url}.flv'`
       end
+    end
+
+    def generate_index
+      template = File.read(File.dirname(__FILE__) + '/index.haml')
+
+      open(File.join(output_dir, 'index.html'), 'w') do |out|
+        locals = {:subs => subs, :output_dir => output_dir}
+        out.write(Haml::Engine.new(template).render(Object.new, locals))
+      end
+    end
+
+    def copy_assets
+      FileUtils.cp_r Dir[File.join(File.dirname(__FILE__), '..', 'assets', '*')], output_dir
     end
 
   end
@@ -126,13 +141,5 @@ end
 
 if __FILE__ == $0
   usage if ARGV.size != 3
-  
-  slicer = SubSlicer::Main.new(*ARGV)
-  slicer.process
-
-  template = File.read(File.dirname(__FILE__) + '/index.haml')
-
-  output = Haml::Engine.new(template).render(Object.new, {:subs => slicer.subs, :output_dir => slicer.output_dir})
-  puts output
-
+  SubSlicer::Main.new(*ARGV).process!
 end
