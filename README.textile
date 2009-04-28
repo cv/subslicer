@@ -1,0 +1,19 @@
+h1. subslicer
+
+h2. "Slice and dice subtitle files, and link them to extracted clips"
+
+We want to be able to click on a rendered view of a subtitle file, and go directly to the part of the .avi file in question. 
+
+There are at least a couple applications of this:
+
+* "sound board" style quote extraction
+* language learning
+
+.h2 file formats
+
+There are two main file formats for subtitles files:
+
+.srt http://en.wikipedia.org/wiki/SubRip
+.sub http://en.wikipedia.org/wiki/MicroDVD
+
+As .srt files seem to be more common, we'll deal with those.
