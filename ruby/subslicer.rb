@@ -123,6 +123,6 @@ if __FILE__ == $0
   list = SubSlicer::SubList.load(srt)
   
   list.subs.each do |sub|
-    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to} #{output_dir}/%05d.flv"
+    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to} #{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}.flv"
   end
 end
