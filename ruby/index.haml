@@ -1,0 +1,43 @@
+%html
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "content-type" }
+    %script{ :type => "text/javascript", :src => "flowplayer-3.1.0.min.js" }
+    %link{ :href => "style.css", :rel => "stylesheet", :type => "text/css" }
+    %title
+      Subtitle Thing
+  %body
+    #page
+      %h1
+        Subtitle Thing
+
+      %a#player{ :href => '', :style => "display:block;width:400px;height:300px" }
+      %script
+        flowplayer("player", "../flowplayer-3.1.0.swf");
+      /
+        after this line is purely informational stuff.
+        does not affect on Flowplayer functionality
+      %p
+        If you are running these examples
+        %strong
+          locally
+        and not on some webserver you must edit your
+        %a{ :href => "http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html" }
+          Flash security settings
+        \.
+
+      .line
+        %p#clip00-00-02_000.source
+        %p
+          00:00:02
+        %a{ :href => "clips/clip00-00-02_000" }
+          We share a dream
+        %p#clip00-00-02_000.target
+          %a{ :href => "clips/clip00-00-02_000" }
+            Compartilhamos um sonho...
+
+      %ul#subs
+        - for sub in subs
+          %li
+            %span.from= sub.from
+            %span.to= sub.to
+            %span.url= "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"

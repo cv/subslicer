@@ -9,6 +9,9 @@ Based on code from Arne Brasseur, http://www.arnebrasseur.net
 Available under the terms of the BSD licence
 =end
 
+require 'rubygems'
+require 'haml'
+
 module SubSlicer
 
   class Time
@@ -92,13 +95,25 @@ def usage
   exit
 end
 
+def ffmpeg_cmd(movie, subs, output_dir)
+  subs.each do |sub|
+    movie_url = "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
+    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to - sub.from} #{movie_url}.flv"
+  end
+end
+
 if __FILE__ == $0
   usage if ARGV.size != 3
   
   movie, srt, output_dir = *ARGV
   list = SubSlicer::SubList.load(srt)
   
-  list.subs.each do |sub|
-    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to - sub.from} #{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}.flv"
-  end
+  ffmpeg_cmd(movie, list.subs, output_dir)
+
+  template = File.read(File.dirname(__FILE__) + '/index.haml')
+
+  haml = Haml::Engine.new(template)
+  output = haml.to_html(Object.new, {:subs => list.subs, :output_dir => output_dir})
+  puts output
+
 end
