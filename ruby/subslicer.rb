@@ -26,12 +26,8 @@ module SubSlicer
       @value = value
     end
 
-    def *(factor)
-      Time.new(@value * factor)
-    end
-
-    def +(term)
-      Time.new(@value + term)
+    def -(term)
+      Time.new(@value - term.value)
     end
 
     def to_s
@@ -49,14 +45,6 @@ module SubSlicer
   end
 
   class Sub < Struct.new(:index, :from, :to, :sub)
-    def *(factor)
-      Sub.new(self.index, self.from * factor, self.to * factor, self.sub)
-    end
-
-    def +(term)
-      Sub.new(self.index, self.from + term, self.to + term, self.sub)
-    end
-    
     def to_s
       "#{self.index}
 #{self.from} --> #{self.to}
@@ -87,18 +75,6 @@ module SubSlicer
       @subs = subs
     end
 
-    def *(factor)
-      SubList.new(@subs.map {|s| s * factor})
-    end
-
-    def +(term)
-      SubList.new(@subs.map {|s| s + term})
-    end
-
-    def [](i)
-      @subs[i-1]
-    end
-
     def to_s
       @subs.map {|s| s.to_s}.join
     end
@@ -123,6 +99,6 @@ if __FILE__ == $0
   list = SubSlicer::SubList.load(srt)
   
   list.subs.each do |sub|
-    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to} #{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}.flv"
+    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to - sub.from} #{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}.flv"
   end
 end
