@@ -122,5 +122,7 @@ if __FILE__ == $0
   movie, srt, output_dir = *ARGV
   list = SubSlicer::SubList.load(srt)
   
-  puts list
+  list.subs.each do |sub|
+    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to} #{output_dir}/%05d.flv"
+  end
 end
