@@ -4,15 +4,16 @@
     %script{ :type => "text/javascript", :src => "flowplayer-3.1.0.min.js" }
     %link{ :href => "style.css", :rel => "stylesheet", :type => "text/css" }
     %title
-      Subtitle Thing
+      SubThing
   %body
     #page
       %h1
-        Subtitle Thing
+        SubThing
 
       %a#player{ :href => '', :style => "display:block;width:400px;height:300px" }
+      
       %script
-        flowplayer("player", "../flowplayer-3.1.0.swf");
+        flowplayer('player', 'flowplayer-3.1.0.swf');
 
       .line
         %p#clip00-00-02_000.source
