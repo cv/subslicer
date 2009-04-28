@@ -11,6 +11,7 @@ Available under the terms of the BSD licence
 
 require 'rubygems'
 require 'haml'
+require 'fileutils'
 
 module SubSlicer
 
@@ -67,8 +68,8 @@ module SubSlicer
 
     attr_accessor :subs
 
-    def self.load(fn)
-      subs = IO.read(fn).scan(REGEX).map do |r| 
+    def self.load(file)
+      subs = IO.read(file).scan(REGEX).map do |r| 
         Sub.new(r[0], Time.parse(r[1]), Time.parse(r[2]), r[3])
       end
       self.new subs
@@ -81,6 +82,34 @@ module SubSlicer
     def to_s
       @subs.map {|s| s.to_s}.join
     end
+  end
+
+  class Main < Struct.new(:movie, :srt, :output_dir, :subs)
+
+    def initialize(movie, srt, output_dir)
+      self.movie = movie
+      self.srt = srt
+      self.output_dir = output_dir
+      self.subs = SubSlicer::SubList.load(srt).subs
+    end
+    
+    def process
+      clobber_output
+      ffmpeg
+    end
+    
+    def clobber_output
+      FileUtils.rm_rf(output_dir)
+      FileUtils.mkdir_p(output_dir)
+    end
+    
+    def ffmpeg
+      subs.map do |sub|
+        movie_url = "#{@output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
+        `ffmpeg -i #{@movie} -ss #{sub.from} -t #{sub.to - sub.from} #{movie_url}.flv`
+      end
+    end
+
   end
 end
 
@@ -95,25 +124,15 @@ def usage
   exit
 end
 
-def ffmpeg_cmd(movie, subs, output_dir)
-  subs.each do |sub|
-    movie_url = "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
-    puts "ffmpeg -i #{movie} -ss #{sub.from} -t #{sub.to - sub.from} #{movie_url}.flv"
-  end
-end
-
 if __FILE__ == $0
   usage if ARGV.size != 3
   
-  movie, srt, output_dir = *ARGV
-  list = SubSlicer::SubList.load(srt)
-  
-  ffmpeg_cmd(movie, list.subs, output_dir)
+  slicer = SubSlicer::Main.new(*ARGV)
+  slicer.process
 
   template = File.read(File.dirname(__FILE__) + '/index.haml')
 
-  haml = Haml::Engine.new(template)
-  output = haml.to_html(Object.new, {:subs => list.subs, :output_dir => output_dir})
+  output = Haml::Engine.new(template).render(Object.new, {:subs => slicer.subs, :output_dir => slicer.output_dir})
   puts output
 
 end
