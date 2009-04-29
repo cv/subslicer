@@ -36,10 +36,14 @@ a {
   list-style-type: none;
 }
 
-#subs li {
+#subs {
   font-size: small;
 }
 
-#subs li .from, #subs li .to, #subs li .url {
+#subs .from, #subs .to {
   display: none;
+}
+
+#subs a {
+  display: block;
 }
