@@ -12,16 +12,15 @@ h1 {
   letter-spacing: -1px;
   color: #2D5AC3;
   font-weight: normal;
-  margin-bottom: -10px;
   font-size: 22px; }
 
 #player {
   width: 475px;
-  float: right; }
+  float: left; }
 
 #page {
   background-color: #efefef;
-  width: 600px;
+  width: 840px;
   margin: 50px auto;
   padding: 20px 150px 20px 50px;
   min-height: 600px;
@@ -31,3 +30,16 @@ h1 {
 
 a {
   color: #295c72; }
+
+#subs {
+  float: right;
+  list-style-type: none;
+}
+
+#subs li {
+  font-size: small;
+}
+
+#subs li .from, #subs li .to, #subs li .url {
+  display: none;
+}
