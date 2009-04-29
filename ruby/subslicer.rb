@@ -30,8 +30,12 @@ module SubSlicer
       @value = value
     end
 
-    def -(term)
-      Time.new(@value - term.value)
+    def +(time)
+      Time.new(@value + time.value)
+    end
+
+    def -(time)
+      Time.new(@value - time.value)
     end
 
     def to_s
@@ -95,6 +99,7 @@ module SubSlicer
     
     def process!
       clobber_output
+      # add_some_padding
       ffmpeg
       generate_index
       copy_assets
@@ -105,6 +110,13 @@ module SubSlicer
       FileUtils.mkdir_p(output_dir)
     end
     
+    def add_some_padding
+      subs.each do |sub|
+        sub.from -= Time.parse('00:00:00,500')
+        sub.to   += Time.parse('00:00:00,500')
+      end
+    end
+
     def ffmpeg
       subs.map do |sub|
         movie_url = "#{output_dir}/#{sub.from.to_s.gsub(/:/, '-').gsub(/,/, '_')}"
