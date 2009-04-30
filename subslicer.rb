@@ -134,7 +134,7 @@ module SubSlicer
     end
 
     def copy_assets
-      FileUtils.cp_r Dir[File.join(File.dirname(__FILE__), '..', 'assets', '*')], output_dir
+      FileUtils.cp_r Dir[File.join(File.dirname(__FILE__), 'assets', '*')], output_dir
     end
 
   end
