@@ -1,15 +1,15 @@
 h1. subslicer
 
-h2. "Slice and dice subtitle files, and link them to extracted clips"
+h2. Slice and dice subtitle files
 
-We want to be able to click on a rendered view of a subtitle file, and go directly to the part of the .avi file in question. 
+We want to be able to click on a rendered view of a subtitle file, and go directly to the part of the movie file in question. 
 
 There are at least a couple applications of this:
 
 * "sound board" style quote extraction
 * language learning
 
-.h2 file formats
+h2. File formats
 
 There are two main file formats for subtitles files:
 
